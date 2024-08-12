@@ -8,25 +8,46 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export function EditForm({EditData}:{EditData : DataProp}) {
   const [saveEdit, setSaveEdit] = React.useState({id: EditData.id, question: EditData.question, answer: EditData.answer});
+ 
   const hanldeSave = async  (e:any)=>{
     e.preventDefault();
   try {
     console.log("Edited Data:",saveEdit) 
     const res = await SaveForm(saveEdit.id , saveEdit.question , saveEdit.answer)
     toast.success( res ,{
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "dark"
-    })
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark"
+  })
   } catch (error) {
     toast.error("Error Occured")
   }
+}
+  
+  const handleDelete = async (e:any)=>{
+   try{
+    e.preventDefault();
+    const res = await DeleteData(saveEdit.id)
+    toast.success( res ,{
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark"
+  })
+  }catch (error) {
+      toast.error("Error Occured")
+    }
   }
+
   return (
     <Card className="w-full">
       <CardHeader>
@@ -54,7 +75,8 @@ export function EditForm({EditData}:{EditData : DataProp}) {
                   setSaveEdit({ ...saveEdit, answer: e.target.value })
                 }
               />
-              <div className="flex justify-end mt-6">
+              <div className="flex justify-between mt-6">
+              <Button onClick={handleDelete} className="flex w-40 h-12 bg-red-500 items-center mt-6 hover:bg-red-700">Delete</Button>
               <Button onClick={hanldeSave} className="flex w-40 h-12 items-center mt-6">Save</Button>
               </div>
             </div>
@@ -85,7 +107,7 @@ import {
   AlertDialogHeader,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import SaveForm, { DataProp } from "@/app/(server)/api";
+import SaveForm, { DataProp, DeleteData } from "@/app/(server)/api";
 
 export function EditAlert({ open , chagedData , onclick }:any) {
   return (

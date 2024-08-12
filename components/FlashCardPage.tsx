@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/app/FlashCard.css"
 import { DataProp, GetData } from "@/app/(server)/api";
+import { toast } from "react-toastify";
 
 const FlashCardCarousel = () => {
   const [intialData, setinitialData] = useState<DataProp[] | undefined>(undefined);
@@ -18,8 +19,12 @@ const FlashCardCarousel = () => {
   };
 
   const handleGet = async () => {
-    const data = await GetData(); 
+    try {
+      const data = await GetData(); 
     setinitialData(data);
+    } catch (error) {
+      toast.error("Could Not Connect With DataBase")
+    }
   }
 
   useEffect(() => {

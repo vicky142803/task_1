@@ -60,3 +60,16 @@ export async function GetData() {
         return [];
     }
 }
+
+export async function DeleteData(id: number):Promise<string> {
+    try {
+        await prisma.quizz.delete({
+            where: {
+                id: id
+            }
+        });
+        return "Successfully Deleted. Please Refresh the Page.";
+    }catch(error){
+        return "Somethind Went Wrong. Please Try Again.";
+    }
+}

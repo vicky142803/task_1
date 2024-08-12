@@ -7,7 +7,7 @@ const Appbar = () => {
         <nav className="bg-white border-gray-400 border-y-2 gap-4 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
         <a href="https://github.com/manideep1428" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <Image src="/appbarImage.png" width={80} height={300} className="rounded-full -ml-20 m-2" alt="Flowbite Logo" />
+            <Image src="/appbarImage.png" width={80} height={80} className="rounded-full m-2" alt="Flowbite Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Learn With Cards</span>
         </a>
         <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
