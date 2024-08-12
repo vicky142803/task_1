@@ -1,21 +1,21 @@
 FROM node
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY package.*json .
+# COPY package.*json .
 
-RUN npm install
+# RUN npm install
 
-COPY . .
+# COPY . .
 
-WORKDIR /app/prisma 
+# WORKDIR /app/prisma 
 
-RUN npx prisma generate
+# RUN npx prisma generate
 
-WORKDIR /app
+# WORKDIR /app
 
-RUN npm run build
+# RUN npm run build
 
-EXPOSE 3000
+# EXPOSE 3000
 
-CMD [ "node", "dist/main.js" ]
+# CMD [ "node", "dist/main.js" ]
