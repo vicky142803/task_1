@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,8 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export function EditForm({EditData}:{EditData : DataProp}) {
-  const [saveEdit, setSaveEdit] = React.useState({id: EditData.id, question: EditData.question, answer: EditData.answer});
- 
+  const [saveEdit, setSaveEdit] = useState({id: EditData.id, question: EditData.question, answer: EditData.answer});
+  const router  = useRouter();
   const hanldeSave = async  (e:any)=>{
     e.preventDefault();
   try {
@@ -24,6 +23,7 @@ export function EditForm({EditData}:{EditData : DataProp}) {
       progress: undefined,
       theme: "dark"
   })
+  router.push("/admin")
   } catch (error) {
     toast.error("Error Occured")
   }
@@ -108,6 +108,8 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import SaveForm, { DataProp, DeleteData } from "@/app/(server)/api";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export function EditAlert({ open , chagedData , onclick }:any) {
   return (

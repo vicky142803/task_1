@@ -21,7 +21,7 @@ const FlashCardCarousel = () => {
   const handleGet = async () => {
     try {
       const data = await GetData(); 
-    setinitialData(data);
+      setinitialData(data);
     } catch (error) {
       toast.error("Could Not Connect With DataBase")
     }
