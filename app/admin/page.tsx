@@ -1,11 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { EditAlert, EditForm } from '@/components/FlashEditCard';
-import { flashdata } from '../dum';
+import { EditAlert } from '@/components/FlashEditCard';
 import { Button } from '@/components/ui/button';
 import { DataProp, GetData } from '../(server)/api';
-import { NewFlashCardAlert, NewForm } from '@/components/NewFlashCard';
+import { NewFlashCardAlert } from '@/components/NewFlashCard';
 
 
 export default function Admin() {

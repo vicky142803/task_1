@@ -3,8 +3,8 @@ import Slider from "react-slick";
 import FlashCard from "./FlashCard"; 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../FlashCard.css"
-import { DataProp, GetData } from "../app/(server)/api";
+import "@/app/FlashCard.css"
+import { DataProp, GetData } from "@/app/(server)/api";
 
 const FlashCardCarousel = () => {
   const [intialData, setinitialData] = useState<DataProp[] | undefined>(undefined);
