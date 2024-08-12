@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import FlashCardsPage from "./components/FlashCardPage";
+import FlashCardsPage from "../components/FlashCardPage";
 
 
 function App() {
