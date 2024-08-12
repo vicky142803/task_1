@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../FlashCard.css"; 
+import "../app/FlashCard.css"; 
 
 const FlashCard = ({ question, answer }: { question: string, answer: string}) => {
   const [flipped, setFlipped] = useState(false);
