@@ -7,8 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export function EditForm({EditData}:{EditData : DataProp}) {
   const [saveEdit, setSaveEdit] = useState({id: EditData.id, question: EditData.question, answer: EditData.answer});
-  const router  = useRouter();
+  const [clicked ,setClicked] = useState(false);
   const hanldeSave = async  (e:any)=>{
+    setClicked(true);
     e.preventDefault();
   try {
     console.log("Edited Data:",saveEdit) 
@@ -23,14 +24,16 @@ export function EditForm({EditData}:{EditData : DataProp}) {
       progress: undefined,
       theme: "dark"
   })
-  router.push("/admin")
+  setClicked(false);
   } catch (error) {
     toast.error("Error Occured")
+    setClicked(false);
   }
 }
   
   const handleDelete = async (e:any)=>{
    try{
+
     e.preventDefault();
     const res = await DeleteData(saveEdit.id)
     toast.success( res ,{
@@ -76,8 +79,11 @@ export function EditForm({EditData}:{EditData : DataProp}) {
                 }
               />
               <div className="flex justify-between mt-6">
-              <Button onClick={handleDelete} className="flex w-40 h-12 bg-red-500 items-center mt-6 hover:bg-red-700">Delete</Button>
-              <Button onClick={hanldeSave} className="flex w-40 h-12 items-center mt-6">Save</Button>
+              <Button onClick={handleDelete} className="flex w-40 h-12 bg-red-500 items-center mt-6 hover:bg-red-700">
+              { clicked ? "---" :"Delete"}
+                </Button>
+              <Button onClick={hanldeSave} className="flex w-40 h-12 items-center mt-6">
+              { clicked ? "---" :"Save"}</Button>
               </div>
             </div>
             <ToastContainer
