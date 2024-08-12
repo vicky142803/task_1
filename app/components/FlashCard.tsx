@@ -1,24 +1,23 @@
-import { useState } from 'react'
+import React, { useState } from "react";
+import "../FlashCard.css"; 
 
-export default function Flashcard({ flashcard }) {
-  const [isFlipped, setIsFlipped] = useState(false)
-
-  const handleFlip = () => {
-    setIsFlipped(!isFlipped)
-  }
+const FlashCard = ({ question, answer }: { question: string, answer: string}) => {
+  const [flipped, setFlipped] = useState(false);
 
   return (
     <div
-      className="w-64 h-40 bg-white shadow-md rounded-lg cursor-pointer"
-      onClick={handleFlip}
+      className={`relative w-80 h-48 bg-white text-black rounded-lg shadow-lg cursor-pointer transform-style-3d transition-transform duration-500 ${flipped ? 'rotate-y-180' : ''
+        }`}
+      onClick={() => setFlipped(!flipped)}
     >
-      <div className="w-full h-full flex items-center justify-center p-4">
-        {isFlipped ? (
-          <p className="text-center">{flashcard.answer}</p>
-        ) : (
-          <p className="text-center">{flashcard.question}</p>
-        )}
+      <div className="absolute inset-0 p-4 flex items-center justify-center backface-hidden">
+        <span className="text-xl text-center font-bold">{question}</span>
+      </div>
+      <div className="absolute inset-0 p-4 flex items-center justify-center backface-hidden rotate-y-180 bg-blue-500 text-white rounded-lg">
+        <span className="text-xl">{answer}</span>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default FlashCard;

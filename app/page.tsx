@@ -1,10 +1,14 @@
-import Image from "next/image";
-import Flashcard from "./components/FlashCard";
+'use client'
+import React from "react";
+import FlashCardsPage from "./components/FlashCardPage";
 
-export default function Home() {
+
+function App() {
   return (
-    <div>
-      <Flashcard/>
+    <div className="flex bg-black items-center justify-center min-h-screen">
+      <FlashCardsPage/>
     </div>
-  )
+  );
 }
+
+export default App;
